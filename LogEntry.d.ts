@@ -5,7 +5,7 @@ interface IdentityJson {
     type: string
 }
 interface LamportClockJson {
-    id: 'string',
+    id: string,
     time: number
 }
 interface LogEntry<T>{

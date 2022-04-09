@@ -12,21 +12,37 @@ declare module 'orbit-db' {
     import { Identity } from "orbit-db-identity-provider";
     import * as IPFS from "ipfs";
     import * as elliptic from "elliptic";
-    import OrbitDBAddress from 'orbit-db'
+    import AccessControllers from "orbit-db-access-controllers"
+
+    export class OrbitDBAddress {
+
+      constructor(root: string, path: string);
+
+      toString(): string;
+
+      static isValid(): boolean;
+
+      static parse(address: string): OrbitDBAddress;
+
+      static join(...paths: string[]): string;
+
+    }
+
     export class OrbitDB {
 
         _ipfs: IPFS;
 
         id: string;
+        identity: Identity;
         stores: any;
         directory: string;
         keystore: Keystore;
-        
+
         // For OpenTelemetry Plugin
         span?: any;
 
         static databaseTypes: string[];
-        
+
 
         constructor(ipfs: IPFS, directory?: string, options?: {
             peerId?: string,
@@ -34,9 +50,9 @@ declare module 'orbit-db' {
         });
 
         /**
-         * Creates and returns an instance of OrbitDB. 
-         * @param ipfs 
-         * @param options Other options: 
+         * Creates and returns an instance of OrbitDB.
+         * @param ipfs
+         * @param options Other options:
          * <ul>
          * <li>directory (string): path to be used for the database files. By default it uses './orbitdb'.</li>
          * <li>peerId (string): By default it uses the base58 string of the ipfs peer id.</li>
@@ -50,7 +66,8 @@ declare module 'orbit-db' {
             peerId?: string,
             keystore?: Keystore,
             cache?: Cache<any>,
-            identity?: Identity
+            identity?: Identity,
+            AccessControllers?: AccessControllers,
         }): Promise<OrbitDB>
 
         create(name: string, type: TStoreType, options?: ICreateOptions): Promise<Store>;

@@ -1,8 +1,10 @@
 declare module "orbit-db-store" {
     import IPFS = require("ipfs");
+    import Log from "ipfs-log";
     import { Identity } from "orbit-db-identity-provider";
     import { EventEmitter } from 'events';
     import * as elliptic from "elliptic";
+    import AccessController from "orbit-db-access-controllers/src/access-controller-interface"
 
     export default class Store {
 
@@ -12,10 +14,10 @@ declare module "orbit-db-store" {
         readonly identity: Identity;
 
         address: { root: string, path: string };
-        /** 
+        /**
          * Contains all entries of this Store
          */
-        all: any[];
+        all: unknown;
         type: string;
         /**
          * Returns an instance of `elliptic.ec.KeyPair`.
@@ -24,23 +26,27 @@ declare module "orbit-db-store" {
          */
         key: elliptic.ec.KeyPair;
         replicationStatus: IReplicationStatus;
-         
+        id: string;
+
         events: EventEmitter;
+
+        access: AccessController;
+        _oplog: Log
 
         /**
          * Apparently not meant for outside usage
-         * @param ipfs 
-         * @param identity 
-         * @param address 
-         * @param options 
+         * @param ipfs
+         * @param identity
+         * @param address
+         * @param options
          */
         protected constructor (ipfs: IPFS, identity: Identity, address: string, options: IStoreOptions);
 
         close(): Promise<void>;
         drop(): Promise<void>;
-        
+
         setIdentity(identity: Identity): void;
-        
+
         /**
          * Load the locally persisted database state to memory.
          * @param amount Amount of entries loaded into memory
