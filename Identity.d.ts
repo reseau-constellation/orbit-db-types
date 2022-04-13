@@ -46,7 +46,7 @@ declare module "orbit-db-identity-provider" {
         /**
          * Verify a signature of OrbitDB public key signature
          */
-        static verifyIdentity(identity: IdentityAsJson): Promise<boolean>
+        static verifyIdentity(identity: IdentityJson): Promise<boolean>
 
     }
 

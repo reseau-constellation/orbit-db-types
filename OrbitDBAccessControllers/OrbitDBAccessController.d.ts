@@ -1,6 +1,6 @@
-
 declare module "orbit-db-access-controllers/src/orbitdb-access-controller" {
     import AccessController from "orbit-db-access-controllers/src/access-controller-interface"
+    import { IdentityProvider } from 'orbit-db-identity-provider'
     import OrbitDB from "orbit-db"
 
     export default class OrbitDBAccessController extends AccessController {
@@ -13,7 +13,7 @@ declare module "orbit-db-access-controllers/src/orbitdb-access-controller" {
         get address (): string
 
         // Return true if entry is allowed to be added to the database
-        canAppend (entry: LogEntry<any>, identityProvider: any): Promise<boolean>
+        canAppend (entry: LogEntry<any>, identityProvider: typeof IdentityProvider): Promise<boolean>
 
         get capabilities (): {[key: string]: Set<any>}
         get (capability: string): Set<any>
@@ -34,5 +34,4 @@ declare module "orbit-db-access-controllers/src/orbitdb-access-controller" {
         /* Factory */
         static create (orbitdb: OrbitDB, options: any): Promise<OrbitDBAccessController>
     }
-
 }

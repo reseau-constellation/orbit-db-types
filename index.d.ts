@@ -13,4 +13,6 @@
 /// <reference path="./IReplicationStatus.d.ts" />
 /// <reference path="./OrbitDBAccessControllers/OrbitDBAccessControllers.d.ts" />
 /// <reference path="./OrbitDBAccessControllers/OrbitDBAccessController.d.ts" />
+/// <reference path="./OrbitDBAccessControllers/IPFSAccessController.d.ts" />
 /// <reference path="./OrbitDBAccessControllers/AccessControllerInterface.d.ts" />
+/// <reference path="./OrbitDBAccessControllers/Utils.d.ts" />
