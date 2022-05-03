@@ -1,9 +1,10 @@
 {
   "name": "@constl/orbit-db-types",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Unofficial typings for orbit-db",
   "types": "index.d.ts",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/reseau-constellation/orbit-db-types.git"
@@ -16,9 +17,9 @@
   "author": "lukas2005",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lukas2005/orbit-db-types/issues"
+    "url": "https://github.com/reseau-constellation/orbit-db-types/issues"
   },
-  "homepage": "https://github.com/lukas2005/orbit-db-types#readme",
+  "homepage": "https://github.com/reseau-constellationn/orbit-db-types#readme",
   "scripts": {
     "publishNPM": "yarn publish --access public"
   },
