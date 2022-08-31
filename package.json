@@ -1,7 +1,7 @@
 {
   "name": "@constl/orbit-db-types",
   "private": false,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Unofficial typings for orbit-db",
   "types": "index.d.ts",
   "type": "module",
@@ -23,10 +23,10 @@
   "scripts": {
     "publishNPM": "yarn publish --access public"
   },
-  "dependencies": {
+  "devDependencies": {
     "@types/elliptic": "^6.4.6",
     "@types/events": "^1.2.0",
-    "ipfs": "^0.61.0",
-    "orbit-db": "git+https://github.com/orbitdb/orbit-db.git"
+    "ipfs": "^0.63.5",
+    "orbit-db": "^0.28.7"
   }
 }
