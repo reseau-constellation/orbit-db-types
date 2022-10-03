@@ -1,4 +1,4 @@
-declare module "orbit-db-access-controllers/src/ipfs-access-controller" {
+declare module "orbit-db-access-controllers/src/ipfs-access-controller.js" {
     import AccessController from "orbit-db-access-controllers/src/access-controller-interface"
     import { IdentityProvider } from 'orbit-db-identity-provider'
     import OrbitDB from "orbit-db"

@@ -1,4 +1,4 @@
-declare module "orbit-db-access-controllers/src/access-controller-interface" {
+declare module "orbit-db-access-controllers/src/access-controller-interface.js" {
 
     import OrbitDB from 'orbit-db'
     import { IdentityProvider } from 'orbit-db-identity-provider'
