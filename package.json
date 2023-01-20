@@ -1,7 +1,7 @@
 {
   "name": "@constl/orbit-db-types",
   "private": false,
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Unofficial typings for orbit-db",
   "types": "index.d.ts",
   "type": "module",
@@ -27,6 +27,6 @@
     "@types/elliptic": "^6.4.6",
     "@types/events": "^1.2.0",
     "ipfs": "^0.63.5",
-    "orbit-db": "^0.28.7"
+    "orbit-db": "^0.29.0"
   }
 }
