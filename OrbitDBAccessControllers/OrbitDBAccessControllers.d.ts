@@ -49,7 +49,7 @@ declare module "orbit-db-access-controllers" {
     }
 
     export default class AccessControllers extends EventEmitter {
-        static get AccessController(): AccessController;
+        static get AccessController(): new () => AccessController;
 
         static isSupported (type: string): boolean
 
