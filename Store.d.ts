@@ -54,6 +54,8 @@ declare module "orbit-db-store" {
          */
         load(amount?: number): Promise<void>;
 
+        syncLocal(): Promise<void>
+
         protected _addOperation(data: any, options: { onProgressCallback?: (entry: any) => any, pin?: boolean }): Promise<string>;
     }
 }
