@@ -8,10 +8,10 @@ This repository contains unofficial typescript definitons for [OrbitDB](https://
 
 # Install
 
-Install this package using [npm](https://github.com/orbitdb/orbit-db-types):
+Install this package from npm:
 
 ```sh
-$ npm i https://github.com/orbitdb/orbit-db-types.git
+$ pnpm i @constl/orbit-db-types
 ```
 
 # Contributing
