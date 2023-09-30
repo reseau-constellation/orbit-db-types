@@ -145,11 +145,11 @@ declare module "@orbitdb/core" {
       hash: string;
     };
 
-    export type KeyValueStore = {
+    export type KeyValue = {
         type: "keyvalue";
         address: string;
         put(key: string, value: unknown): Promise<string>;
-        set: KeyValueStore["put"];
+        set: KeyValue["put"];
         del(key: string): Promise<string>;
         get(key: string): Promise<unknown | undefined>;
         all(): Promise<{ key: string; value: unknown; hash: string }[]>;
