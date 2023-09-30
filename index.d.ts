@@ -106,10 +106,14 @@ declare module "@orbitdb/core" {
       write: string[];
       canAppend: (entry: Entry) => Promise<boolean>;
     }>;
-    export function Identities({keystore: KeyStore, path: strig, storage: Storage, ipfs: IPFS}): Promise<IdentitiesType>;
+    export function Identities(args: {keystore?: typeof KeyStore, path?: string, storage?: Storage, ipfs?: IPFS}): Promise<IdentitiesType>;
     export class IdentitiesType {
+      createIdentity;
       getIdentity;
       verifyIdentity: (identity) => boolean;
+      sign;
+      verify;
+      keystore;
     }
     export class Storage {
       put;
@@ -161,7 +165,7 @@ declare module "@orbitdb/core" {
         log: Log;
       };
 
-      export function KeyStore ({storage: Storage, path: string}): Promise<KeyStoreType>;
+      export function KeyStore (args: {storage?: Storage, path?: string}): Promise<KeyStoreType>;
 
       export type KeyStoreType = {
         clear,
