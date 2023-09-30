@@ -81,7 +81,7 @@ declare module "@orbitdb/core" {
       address,
     }: {
       orbitdb: OrbitDB;
-      identities: Identities;
+      identities: typeof Identities;
       address?: string;
     }): Promise<AccessController>;
   
@@ -98,7 +98,7 @@ declare module "@orbitdb/core" {
       storage: Storage;
     }): (args: {
       orbitdb: OrbitDB;
-      identities: Identities;
+      identities: typeof Identities;
       address: string;
     }) => Promise<{
       type: "ipfs";
@@ -106,7 +106,8 @@ declare module "@orbitdb/core" {
       write: string[];
       canAppend: (entry: Entry) => Promise<boolean>;
     }>;
-    export class Identities {
+    export function Identities({keystore: KeyStore, path: strig, storage: Storage, ipfs: IPFS}): Promise<IdentitiesType>;
+    export class IdentitiesType {
       getIdentity;
       verifyIdentity: (identity) => boolean;
     }
@@ -159,5 +160,17 @@ declare module "@orbitdb/core" {
         access: AccessController;
         log: Log;
       };
+
+      export function KeyStore ({storage: Storage, path: string}): Promise<KeyStoreType>;
+
+      export type KeyStoreType = {
+        clear,
+        close,
+        hasKey,
+        addKey,
+        createKey,
+        getKey,
+        getPublic
+      }
   }
   
