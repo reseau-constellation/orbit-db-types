@@ -81,7 +81,7 @@ declare module "@orbitdb/core" {
       address,
     }: {
       orbitdb: OrbitDB;
-      identities: typeof Identities;
+      identities: IdentitiesType;
       address?: string;
     }): Promise<AccessController>;
   
@@ -98,7 +98,7 @@ declare module "@orbitdb/core" {
       storage: Storage;
     }): (args: {
       orbitdb: OrbitDB;
-      identities: typeof Identities;
+      identities: IdentitiesType;
       address: string;
     }) => Promise<{
       type: "ipfs";
