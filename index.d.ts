@@ -115,8 +115,8 @@ declare module "@orbitdb/core" {
       verify;
       keystore;
     }
-    export class Entry {
-      create;
+    export interface Entry {
+      create: (identity: Identity, id: string, payload: unknown, clock?: Clock, next?: string[], refs?: string[]) => Promise<LogEntry>;
       verify: (identities: IdentitiesType, entry: LogEntry) => Promise<boolean>;
       decode: (bytes: Uint8Array) => Promise<LogEntry>;
       isEntry: (obj: object) => boolean;
