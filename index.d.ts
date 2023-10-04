@@ -115,13 +115,13 @@ declare module "@orbitdb/core" {
       verify;
       keystore;
     }
-    export interface Entry {
+    export const Entry:  {
       create: (identity: Identity, id: string, payload: unknown, clock?: Clock, next?: string[], refs?: string[]) => Promise<LogEntry>;
       verify: (identities: IdentitiesType, entry: LogEntry) => Promise<boolean>;
       decode: (bytes: Uint8Array) => Promise<LogEntry>;
       isEntry: (obj: object) => boolean;
       isEqual: (a: LogEntry, b: LogEntry) => boolean;
-    }
+    };
     export class Storage {
       put;
       get;
