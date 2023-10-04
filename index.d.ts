@@ -71,8 +71,8 @@ declare module "@orbitdb/core" {
     export type Log = {
       id;
       clock: Clock;
-      heads: () => Promise<Entry[]>;
-      traverse: () => AsyncGenerator<Entry, void, unknown>;
+      heads: () => Promise<LogEntry[]>;
+      traverse: () => AsyncGenerator<LogEntry, void, unknown>;
     };
 
     export function AccessControllerGenerator({
@@ -88,7 +88,7 @@ declare module "@orbitdb/core" {
     export class AccessController {
       type: string;
       address: string;
-      canAppend: (entry: Entry) => Promise<boolean>;
+      canAppend: (entry: LogEntry) => Promise<boolean>;
     }
   
     export function useDatabaseType(type: { type: string }): void;
@@ -104,7 +104,7 @@ declare module "@orbitdb/core" {
       type: "ipfs";
       address: string;
       write: string[];
-      canAppend: (entry: Entry) => Promise<boolean>;
+      canAppend: (entry: LogEntry) => Promise<boolean>;
     }>;
     export function Identities(args: {keystore?: KeyStoreType, path?: string, storage?: Storage, ipfs?: IPFS}): Promise<IdentitiesType>;
     export class IdentitiesType {
@@ -114,6 +114,13 @@ declare module "@orbitdb/core" {
       sign;
       verify;
       keystore;
+    }
+    export class Entry {
+      create;
+      verify: (identities: IdentitiesType, entry: LogEntry) => Promise<boolean>;
+      decode: (bytes: Uint8Array) => Promise<LogEntry>;
+      isEntry: (obj: object) => boolean;
+      isEqual: (a: LogEntry, b: LogEntry) => boolean;
     }
     export class Storage {
       put;
@@ -137,7 +144,7 @@ declare module "@orbitdb/core" {
       time: number;
     };
   
-    export type Entry<T = unknown> = {
+    export type LogEntry<T = unknown> = {
       id: string;
       payload: { op: string; key: string | null; value?: T };
       next: string[];
