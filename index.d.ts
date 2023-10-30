@@ -63,6 +63,7 @@ declare module "@orbitdb/core" {
     export function createOrbitDB(args: {
       ipfs: IPFS;
       directory: string;
+      id?: string;
     }): Promise<OrbitDB>;
   
     export function useAccessController(accessController: { type: string }): void;
