@@ -1,9 +1,9 @@
 declare module "@orbitdb/core" {
     import EventEmitter from "events";
-    import type { IPFS } from "ipfs-core";
+    import type { Helia } from "helia";
   
     export function Database(args: {
-      ipfs: IPFS;
+      ipfs: Helia;
       identity?: Identity;
       address: string;
       name?: string;
@@ -61,7 +61,7 @@ declare module "@orbitdb/core" {
       peerId;
     };
     export function createOrbitDB(args: {
-      ipfs: IPFS;
+      ipfs: Helia;
       directory: string;
       id?: string;
     }): Promise<OrbitDB>;
@@ -107,7 +107,7 @@ declare module "@orbitdb/core" {
       write: string[];
       canAppend: (entry: LogEntry) => Promise<boolean>;
     }>;
-    export function Identities(args: {keystore?: KeyStoreType, path?: string, storage?: Storage, ipfs?: IPFS}): Promise<IdentitiesType>;
+    export function Identities(args: {keystore?: KeyStoreType, path?: string, storage?: Storage, ipfs?: Helia}): Promise<IdentitiesType>;
     export class IdentitiesType {
       createIdentity;
       getIdentity;
