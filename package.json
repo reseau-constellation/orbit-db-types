@@ -1,7 +1,7 @@
 {
   "name": "@constl/orbit-db-types",
   "private": false,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Unofficial typings for orbit-db",
   "types": "index.d.ts",
   "type": "module",
@@ -14,14 +14,14 @@
     "typescript",
     "orbit-db"
   ],
-  "author": "lukas2005",
+  "author": "lukas2005; Julien Jean Malard-Adam",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/reseau-constellation/orbit-db-types/issues"
   },
   "homepage": "https://github.com/reseau-constellationn/orbit-db-types#readme",
   "scripts": {
-    "publishNPM": "yarn publish --access public"
+    "publishNPM": "pnpm publish --access public"
   },
   "devDependencies": {
     "@orbitdb/core": "^2.2.0",
