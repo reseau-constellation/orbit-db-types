@@ -1,6 +1,8 @@
+
 declare module "@orbitdb/core" {
     import EventEmitter from "events";
     import type { HeliaLibp2p } from "helia";
+    import { Libp2p } from "@libp2p/interface";
     import type { PeerId } from "@libp2p/interface";
   
     export function Database(args: {
@@ -61,8 +63,8 @@ declare module "@orbitdb/core" {
       identity: Identity;
       peerId;
     };
-    export function createOrbitDB(args: {
-      ipfs: HeliaLibp2p;
+    export function createOrbitDB<T extends Libp2p = Libp2p>(args: {
+      ipfs: HeliaLibp2p<T>;
       id?: PeerId;
       identity?: Identity;
       identities?: typeof Identities;
