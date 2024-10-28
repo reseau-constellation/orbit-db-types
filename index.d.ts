@@ -160,7 +160,7 @@ declare module "@orbitdb/core" {
       hash: string;
     };
 
-    export type KeyValue = {
+    export type KeyValue = Awaited<ReturnType<typeof Database>> & {
         type: "keyvalue";
         address: string;
         put(key: string, value: unknown): Promise<string>;
