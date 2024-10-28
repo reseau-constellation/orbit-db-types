@@ -1,6 +1,7 @@
 declare module "@orbitdb/core" {
     import EventEmitter from "events";
     import type { HeliaLibp2p } from "helia";
+    import type { PeerId } from "@libp2p/interface";
   
     export function Database(args: {
       ipfs: HeliaLibp2p;
@@ -62,10 +63,11 @@ declare module "@orbitdb/core" {
     };
     export function createOrbitDB(args: {
       ipfs: HeliaLibp2p;
-      directory: string;
-      id?: string;
+      id?: PeerId;
+      identity?: Identity;
+      identities?: typeof Identities;
+      directory?: string;
     }): Promise<OrbitDB>;
-  
     export function useAccessController(accessController: { type: string }): void;
     export function isValidAddress(address: unknown): boolean;
   
