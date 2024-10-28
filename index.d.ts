@@ -65,7 +65,7 @@ declare module "@orbitdb/core" {
     };
     export function createOrbitDB<T extends Libp2p = Libp2p>(args: {
       ipfs: HeliaLibp2p<T>;
-      id?: PeerId;
+      id?: string;
       identity?: Identity;
       identities?: typeof Identities;
       directory?: string;
